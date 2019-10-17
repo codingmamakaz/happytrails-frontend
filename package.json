@@ -1,7 +1,8 @@
 {
-  "name": "happytrails-frontend",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
@@ -28,7 +29,9 @@
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
-    "build": "react-scripts build",
+    "build": "cd client && yarn install && yarn build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "yarn build && yarn deploy && echo 'Client built!'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

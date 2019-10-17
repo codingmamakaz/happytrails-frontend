@@ -11,6 +11,7 @@ export const clearTrails = () => {
   }
 }
 
+const apiURL = 'http://localhost:3000/api/v1'
 
 //When a user clicks "save" on TrailCards, this gets triggered.
 //Sends a post request to create a new trail
@@ -20,7 +21,7 @@ export const saveTrail = (trail, currentUser) => {
     const trailInfo = {
       trail: { ...trail, user_id: currentUser.id, api_trail_id: trail.id }
     }
-    return fetch("http://localhost:3000/api/v1/newtrail", {
+    return fetch(`${apiURL}/newtrail`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -49,7 +50,7 @@ export const saveTrail = (trail, currentUser) => {
 //gets all the trails saved under a user
 export const getSavedTrails = () => {
   return dispatch => {
-    return fetch("http://localhost:3000//api/v1/trails", {
+    return fetch(`${apiURL}/trails`, {
 
       credentials: "include",
       method: "GET",

@@ -13,10 +13,6 @@ class GeoForm extends Component {
   }
 
 
-  // componentDidMount() {
-  //   this.props.getTrails()
-  // }
-
   handleOnChange = (event) => {
     this.setState({
       address: event.target.value

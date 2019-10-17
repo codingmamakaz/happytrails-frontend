@@ -3,6 +3,9 @@ import { resetSignupForm } from './signupForm'
 import { clearMyReviews, getMyReviews } from './../actions/reviews'
 import { clearTrails, getSavedTrails } from './../actions/trails'
 
+
+const apiURL = 'http://localhost:3000/api/v1'
+
 export const setCurrentUser = user => {
   return {
     type: "SET_CURRENT_USER",
@@ -17,7 +20,7 @@ export const signup = (credentials, history) => {
       user: credentials
     }
     //this has to be nested for strong params to work
-    return fetch("http://localhost:3000/api/v1/signup", {
+    return fetch(`${apiURL}/signup`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -28,7 +31,6 @@ export const signup = (credentials, history) => {
     })
       .then(res => res.json())
       .then(user => {
-        console.log("user in signup", user)
         if (user.error) {
           alert(user.error)
         } else {
@@ -46,7 +48,7 @@ export const signup = (credentials, history) => {
 export const login = (credentials, history) => {
   return dispatch => {
     console.log("credentials in login are", credentials)
-    return fetch("http://localhost:3000/api/v1/login", {
+    return fetch(`${apiURL}/login`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -73,7 +75,7 @@ export const login = (credentials, history) => {
 
 export const getCurrentUser = () => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/get_current_user", {
+    return fetch(`${apiURL}/get_current_user`, {
       credentials: "include",
       method: "GET",
       hearders: {
@@ -103,7 +105,7 @@ export const logout = () => {
     dispatch(clearCurrentUser())
     dispatch(clearMyReviews())
     dispatch(clearTrails())
-    return fetch("http://localhost:3000/api/v1/logout", {
+    return fetch(`${apiURL}/logout`, {
       credentials: "include",
       method: "DELETE"
     })
