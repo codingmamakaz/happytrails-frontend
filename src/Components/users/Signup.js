@@ -36,7 +36,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
       <div className="field">
         <label className="label">Password</label>
         <div className="control has-icons-left has-icons-right">
-          <input className="input is-hovered is-primary" placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleInputChange} />
+          <input className="input is-hovered is-primary" placeholder="password" value={signupFormData.password} name="password" type="password" onChange={handleInputChange} />
           <span className="icon is-small is-left">
             <i className="fas fa-lock"></i>
           </span>
