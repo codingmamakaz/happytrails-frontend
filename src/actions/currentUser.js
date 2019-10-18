@@ -14,7 +14,6 @@ export const setCurrentUser = user => {
 
 export const signup = (credentials, history) => {
   return dispatch => {
-    console.log("credentials in signup are", credentials)
     const userInfo = {
       user: credentials
     }
@@ -46,7 +45,6 @@ export const signup = (credentials, history) => {
 
 export const login = (credentials, history) => {
   return dispatch => {
-    console.log("credentials in login are", credentials)
     return fetch(`${REACT_APP_API_URL}/login`, {
       credentials: "include",
       method: "POST",
