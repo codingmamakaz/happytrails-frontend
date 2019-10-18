@@ -5,16 +5,19 @@ import { getMyReviews } from '../../actions/reviews'
 
 class MyReviews extends Component {
 
+  //this is to make sure whenever a user refreshes a screen, the reviews are here again.
+  componentDidMount() {
+    this.props.getMyReviews()
+  }
+
   render() {
     const reviewArr = this.props.reviews.currentUserReviews.map(review => {
       return (
-        <div>
-          <MyReview
-            key={review.id}
-            review={review.attributes}
-            review_id={review.id}
-          />
-        </div>
+        <MyReview
+          key={review.id}
+          review={review.attributes}
+          review_id={review.id}
+        />
       )
     })
     return (

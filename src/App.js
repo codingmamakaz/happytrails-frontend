@@ -10,8 +10,13 @@ import MyTrails from './components/trails/MyTrails'
 import ReviewForm from './components/reviews/ReviewForm'
 import MyReviews from './components/reviews/MyReviews'
 import TrailReviews from './components/reviews/TrailReviews'
+import { getCurrentUser } from './actions/currentUser'
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getCurrentUser()
+  }
 
   render() {
     const { loggedIn } = this.props
@@ -48,5 +53,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App)
-
+export default connect(mapStateToProps, { getCurrentUser })(App)

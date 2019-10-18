@@ -23,7 +23,7 @@ class ReviewForm extends Component {
     this.props.addReview(this.state.comment, this.props.location.state.trail, this.props.location.state.currentUser)
       //this makes sure the last review is added before rendering /reviews
       .then(() =>
-        this.props.history.push('/trails/:trail_id/reviews')
+        this.props.history.push(`/trails/${this.props.location.state.trail.id}/reviews`)
       )
   }
 
@@ -65,4 +65,4 @@ const mapStateToProps = ({ reviews }) => {
     reviews
   }
 }
-export default connect(mapStateToProps, { addReview })(ReviewForm);
+export default connect(mapStateToProps, { addReview })(ReviewForm)

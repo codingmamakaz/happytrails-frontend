@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import TrailReview from './TrailReview'
+import { getMyReviews } from '../../actions/reviews'
 
 class TrailReviews extends Component {
+
+  //this is to make sure whenever a user refreshes a screen, the reviews are here again.
+  componentDidMount() {
+    this.props.getMyReviews()
+  }
 
   render() {
 
@@ -11,18 +17,18 @@ class TrailReviews extends Component {
     let trailUrl
 
     newlyCreatedReviewObj = this.props.reviews.currentUserReviews[this.props.reviews.currentUserReviews.length - 1]
-    trailName = newlyCreatedReviewObj.attributes.api_trail_name
-    trailUrl = newlyCreatedReviewObj.attributes.api_trail_url
+    trailName = newlyCreatedReviewObj && newlyCreatedReviewObj.attributes.api_trail_name
+    trailUrl = newlyCreatedReviewObj && newlyCreatedReviewObj.attributes.api_trail_url
 
-    const reviewArr = newlyCreatedReviewObj.attributes.api_reviews.map(review => {
+    const reviewArr = newlyCreatedReviewObj && newlyCreatedReviewObj.attributes.api_reviews.map(review => {
 
       return (
-        < >
-          <TrailReview
-            key={review.id}
-            review={review}
-          />
-        </>
+
+        <TrailReview
+          key={review.id}
+          review={review}
+        />
+
       )
     })
     return (
@@ -37,4 +43,4 @@ class TrailReviews extends Component {
 
 const mapStateToProps = state => ({ reviews: state.reviews })
 
-export default connect(mapStateToProps)(TrailReviews)
+export default connect(mapStateToProps, { getMyReviews })(TrailReviews)

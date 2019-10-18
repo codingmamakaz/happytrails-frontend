@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MyTrailCard from './MyTrailCard'
+import { getSavedTrails } from '../../actions/trails'
 
 class MyTrails extends Component {
+
+  //this is to make sure whenever a user refreshes a screen, the Mytrails are here again.
+  componentDidMount() {
+    this.props.getSavedTrails()
+  }
 
   render() {
     const noSavedTrail = this.props.myTrails.mySavedTrailsArr.length === 0
@@ -27,9 +33,9 @@ class MyTrails extends Component {
         {trailList}
       </>
     )
-
   }
 }
+
 const mapStateToProps = state => ({ myTrails: state.myTrails })
 
-export default connect(mapStateToProps)(MyTrails)
+export default connect(mapStateToProps, { getSavedTrails })(MyTrails)
