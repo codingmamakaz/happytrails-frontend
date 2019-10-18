@@ -3,8 +3,7 @@ import { resetSignupForm } from './signupForm'
 import { clearMyReviews, getMyReviews } from './../actions/reviews'
 import { clearTrails, getSavedTrails } from './../actions/trails'
 
-
-// const apiURL = 'http://localhost:3000/api/v1'
+const REACT_APP_API_URL = 'https://rails-happytrails.herokuapp.com/api/v1'
 
 export const setCurrentUser = user => {
   return {
@@ -20,7 +19,7 @@ export const signup = (credentials, history) => {
       user: credentials
     }
     //this has to be nested for strong params to work
-    return fetch(`/signup`, {
+    return fetch(`${REACT_APP_API_URL}/signup`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -48,7 +47,7 @@ export const signup = (credentials, history) => {
 export const login = (credentials, history) => {
   return dispatch => {
     console.log("credentials in login are", credentials)
-    return fetch(`/login`, {
+    return fetch(`${REACT_APP_API_URL}/login`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -75,7 +74,7 @@ export const login = (credentials, history) => {
 
 export const getCurrentUser = () => {
   return dispatch => {
-    return fetch(`/get_current_user`, {
+    return fetch(`${REACT_APP_API_URL}/get_current_user`, {
       credentials: "include",
       method: "GET",
       hearders: {
@@ -105,7 +104,7 @@ export const logout = () => {
     dispatch(clearCurrentUser())
     dispatch(clearMyReviews())
     dispatch(clearTrails())
-    return fetch(`/logout`, {
+    return fetch(`${REACT_APP_API_URL}/logout`, {
       credentials: "include",
       method: "DELETE"
     })
