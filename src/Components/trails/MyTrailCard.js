@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { saveTrail } from '../../actions/trails'
+import { createBrowserHistory } from "history";
+import { saveTrail, deleteSavedTrail } from '../../actions/trails'
 import { addTrailtoReview } from '../../actions/reviews'
 import { Redirect } from 'react-router';
 
@@ -17,6 +18,7 @@ class MyTrailCard extends Component {
   }
 
   render() {
+    const history = createBrowserHistory()
     const { trail } = this.props
     if (!this.state.reviewClicked) {
       return (
@@ -40,6 +42,8 @@ class MyTrailCard extends Component {
             <footer className="card-footer">
               <a href="/reviews/new" className="card-footer-item has-text-black"
                 onClick={event => this.handleReviewClick(event)}> <i className="fas fa-comments"></i>  Review</a>
+              <button className="card-footer-item has-text-black"
+                onClick={() => { this.props.deleteSavedTrail(trail.api_trail_id, history) }} ><i className="fas fa-trash-alt"></i>Delete</button>
             </footer >
           </div>
         </div>
@@ -60,6 +64,6 @@ const mapStateToProps = ({ currentUser }) => {
     currentUser
   }
 }
-export default connect(mapStateToProps, { saveTrail, addTrailtoReview })(MyTrailCard)
+export default connect(mapStateToProps, { saveTrail, addTrailtoReview, deleteSavedTrail })(MyTrailCard)
 
 

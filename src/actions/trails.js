@@ -76,3 +76,29 @@ export const getSavedTrails = () => {
       .catch(console.log)
   }
 }
+
+export const deleteSavedTrail = (api_trail_id, history) => {
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/trails/${api_trail_id}`, {
+      credentials: "include",
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(trail => {
+        if (trail.error) {
+          alert(trail.error)
+        } else {
+          dispatch({
+            type: 'DELETE_TRAIL',
+            trail,
+            trailId: api_trail_id
+          })
+          history.push(`/my-trails`)
+        }
+      })
+      .catch(console.logs)
+  }
+}
