@@ -10,6 +10,7 @@ import MyTrails from './components/trails/MyTrails'
 import ReviewForm from './components/reviews/ReviewForm'
 import MyReviews from './components/reviews/MyReviews'
 import TrailReviews from './components/reviews/TrailReviews'
+import EditReview from './components/reviews/EditReview'
 //Not sure why, but it stopped compiling with trails/GeoForm and having lowercase geoForm works
 import GeoForm from './components/trails/geoForm'
 import { getCurrentUser } from './actions/currentUser'
@@ -39,6 +40,7 @@ class App extends Component {
                 <Route exact path='/reviews/new' component={ReviewForm} />
                 <Route path='/my-reviews' render={(props) => <MyReviews {...props} reviews={this.props.reviews} />} />
                 <Route exact path='/trails/:trail_id/reviews' component={TrailReviews} />
+                <Route exact path='/reviews/:review_id/edit' component={EditReview} />
               </Switch>
             </div>
           </div>

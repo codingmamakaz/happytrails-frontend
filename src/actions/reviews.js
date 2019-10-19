@@ -102,3 +102,29 @@ export const deleteReview = (review_id, history) => {
       .catch(console.logs)
   }
 }
+
+export const editReview = (review_id, history) => {
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/reviews/${review_id}`, {
+      credentials: "include",
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(review => {
+        if (review.error) {
+          alert(review.error)
+        } else {
+          dispatch({
+            type: 'EDIT_REVIEW',
+            review,
+            reviewId: review_id
+          })
+          history.push(`/my-reviews`)
+        }
+      })
+      .catch(console.logs)
+  }
+}
