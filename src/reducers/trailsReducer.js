@@ -4,7 +4,6 @@ export default (state = [], action) => {
       return action.trailsData.trails
     case "CLEAR_TRAILS":
       return null
-
     default:
       return state
   }

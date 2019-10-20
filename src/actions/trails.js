@@ -77,9 +77,12 @@ export const getSavedTrails = () => {
   }
 }
 
-export const deleteSavedTrail = (api_trail_id, history) => {
+export const deleteSavedTrail = (api_trail_id, user_id, history) => {
   return dispatch => {
-    return fetch(`http://localhost:3000/api/v1/trails/${api_trail_id}`, {
+    console.log("api_trail_id", api_trail_id)
+    console.log("user_id", user_id)
+    return fetch(`http://localhost:3000/api/v1/users/${user_id}/trails/${api_trail_id}`, {
+      // return fetch(`http://localhost:3000/api/v1/trails/${api_trail_id}`, {
       credentials: "include",
       method: "DELETE",
       headers: {
@@ -88,11 +91,12 @@ export const deleteSavedTrail = (api_trail_id, history) => {
     })
       .then(response => response.json())
       .then(trail => {
+        console.log("trail", trail)
         if (trail.error) {
           alert(trail.error)
         } else {
           dispatch({
-            type: 'DELETE_TRAIL',
+            type: 'DELETE_SAVED_TRAIL',
             trail,
             trailId: api_trail_id
           })

@@ -7,6 +7,11 @@ export default (state = { mySavedTrailsArr: [] }, action) => {
     case 'GET_SAVED_TRAILS':
       return { mySavedTrailsArr: action.trailsObj.data }
 
+    case 'DELETE_SAVED_TRAIL':
+      debugger
+      let newSavedTrails = state.mySavedTrailsArr.filter(trail => trail.id !== action.api_trail_id)
+      return { ...state, mySavedTrailsArr: newSavedTrails }
+
     case "CLEAR_MY_TRAILS":
       return null
 

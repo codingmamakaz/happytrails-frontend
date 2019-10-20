@@ -43,7 +43,7 @@ class MyTrailCard extends Component {
               <a href="/reviews/new" className="card-footer-item has-text-black"
                 onClick={event => this.handleReviewClick(event)}> <i className="fas fa-comments"></i>  Review</a>
               <button className="card-footer-item has-text-black"
-                onClick={() => { this.props.deleteSavedTrail(trail.api_trail_id, history) }} ><i className="fas fa-trash-alt"></i>Delete</button>
+                onClick={() => { this.props.deleteSavedTrail(trail.api_trail_id, this.props.currentUser.id, history) }} ><i className="fas fa-trash-alt"></i>Delete</button>
             </footer >
           </div>
         </div>
