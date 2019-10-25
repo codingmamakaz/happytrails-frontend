@@ -1,7 +1,13 @@
-export const setTrail = trailsData => {
+export const setTrails = trailsData => {
   return {
-    type: 'SET_TRAIL',
+    type: 'SET_TRAILS',
     trailsData
+  }
+}
+
+export const clearMyTrails = () => {
+  return {
+    type: "CLEAR_MY_TRAILS"
   }
 }
 
@@ -40,7 +46,6 @@ export const saveTrail = (trail, currentUser) => {
             type: 'ADD_SAVE_TRAIL',
             trail
           })
-          console.log("trails - trail ", trail)
         }
       })
       .catch(console.logs)

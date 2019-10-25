@@ -11,7 +11,6 @@ class TrailReviews extends Component {
   }
 
   render() {
-
     let newlyCreatedReviewObj
     let trailName
     let trailUrl
@@ -21,20 +20,17 @@ class TrailReviews extends Component {
     trailUrl = newlyCreatedReviewObj && newlyCreatedReviewObj.attributes.api_trail_url
 
     const reviewArr = newlyCreatedReviewObj && newlyCreatedReviewObj.attributes.api_reviews.map(review => {
-
       return (
-
         <TrailReview
           key={review.id}
           review={review}
         />
-
       )
     })
     return (
       <div className="has-background-white">
         <div className="is-size-4 has-text-weight-bold"><a href={trailUrl} target="_blank" rel="noopener noreferrer"><span className="icon is-small"><i className="fas fa-link"></i></span> {trailName}</a>
-          {reviewArr}
+          {reviewArr.reverse()}
         </div >
       </div>
     )

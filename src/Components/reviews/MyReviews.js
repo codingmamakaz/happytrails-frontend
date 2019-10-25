@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MyReview from './MyReview'
 import { getMyReviews } from '../../actions/reviews'
+import { Sub } from '../../ui/Styles'
 
 class MyReviews extends Component {
 
-  //this is to make sure whenever a user refreshes a screen, the reviews are here again.
   componentDidMount() {
     this.props.getMyReviews()
   }
@@ -21,16 +21,12 @@ class MyReviews extends Component {
       )
     })
     return (
-      <div className="has-text-white" >
-        {this.props.reviews.currentUserReviews.length === 0 ? <h3>You haven't created any reviews</h3> : null}
-        {reviewArr}
-      </div>
-
+      < >
+        {this.props.reviews.currentUserReviews.length === 0 ? <Sub className="has-text-black">You haven't created any reviews</Sub> : null}
+        {reviewArr.reverse()}
+      </>
     )
   }
-
 }
 
-const mapStateToProps = state => ({ reviews: state.reviews })
-
-export default connect(mapStateToProps, { getMyReviews })(MyReviews)
+export default connect(state => ({ reviews: state.reviews }), { getMyReviews })(MyReviews)

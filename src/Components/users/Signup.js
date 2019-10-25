@@ -23,7 +23,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
   return (
     <form className="signup" onSubmit={handleSubmit}>
       <div className="field">
-        <label className="label">Username</label>
+        <label className="label has-text-white">Username</label>
         <div className="control has-icons-left has-icons-right">
           <input className="input is-hovered is-primary" placeholder="username" value={signupFormData.username} name="username" type="text" onChange={handleInputChange} />
           <span className="icon is-small is-left">
@@ -34,7 +34,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
         </div>
       </div>
       <div className="field">
-        <label className="label">Password</label>
+        <label className="label has-text-white">Password</label>
         <div className="control has-icons-left has-icons-right">
           <input className="input is-hovered is-primary" placeholder="password" value={signupFormData.password} name="password" type="password" onChange={handleInputChange} />
           <span className="icon is-small is-left">

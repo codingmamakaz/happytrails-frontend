@@ -1,7 +1,7 @@
 import { resetLoginForm } from './loginForm'
 import { resetSignupForm } from './signupForm'
 import { clearMyReviews, getMyReviews } from './../actions/reviews'
-import { clearTrails, getSavedTrails } from './../actions/trails'
+import { clearMyTrails, getSavedTrails } from './../actions/trails'
 
 const REACT_APP_API_URL = 'https://rails-happytrails.herokuapp.com/api/v1'
 
@@ -101,7 +101,7 @@ export const logout = () => {
   return dispatch => {
     dispatch(clearCurrentUser())
     dispatch(clearMyReviews())
-    dispatch(clearTrails())
+    dispatch(clearMyTrails())
     return fetch(`${REACT_APP_API_URL}/logout`, {
       credentials: "include",
       method: "DELETE"

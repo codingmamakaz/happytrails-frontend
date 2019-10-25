@@ -4,11 +4,19 @@ import { saveTrail } from '../../actions/trails'
 import { addTrailtoReview } from '../../actions/reviews'
 import { Redirect } from 'react-router';
 
-class MyTrailCard extends Component {
+class MyTrailCards extends Component {
 
   state = {
-    reviewClicked: false,
+    reviewClicked: false
   }
+
+  handleClick = (event) => {
+    event.preventDefault()
+    this.setState({
+      vote: this.state.vote + 1
+    })
+  }
+
 
   handleReviewClick = event => {
     event.preventDefault()
@@ -38,8 +46,8 @@ class MyTrailCard extends Component {
             </div>
 
             <footer className="card-footer">
-              <a href="/reviews/new" className="card-footer-item has-text-black"
-                onClick={event => this.handleReviewClick(event)}> <i className="fas fa-comments"></i>  Review</a>
+              <div className="card-footer-item has-text-black"
+                onClick={event => this.handleReviewClick(event)}> <i className="fas fa-comments"></i>  Review</div>
             </footer >
           </div>
         </div>
@@ -60,6 +68,6 @@ const mapStateToProps = ({ currentUser }) => {
     currentUser
   }
 }
-export default connect(mapStateToProps, { saveTrail, addTrailtoReview })(MyTrailCard)
+export default connect(mapStateToProps, { saveTrail, addTrailtoReview })(MyTrailCards)
 
 

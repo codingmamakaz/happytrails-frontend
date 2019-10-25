@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Geocode from "react-geocode"
-import { setTrail } from '../../actions/trails'
+import { setTrails } from '../../actions/trails'
 import IndexTrail from './IndexTrail'
 
 class GeoForm extends Component {
@@ -11,7 +11,6 @@ class GeoForm extends Component {
     lng: null,
     isSubmitted: false
   }
-
 
   handleOnChange = (event) => {
     this.setState({
@@ -27,10 +26,17 @@ class GeoForm extends Component {
 
   getTrails = (lat, lng) => {
     const key = "200594950-5f020033b054b3d9e23fb80d0d1d2fd8"
-
     fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxResults=12&key=${key}`)
+      // const key = process.env.REACT_APP_TRAIL_PRJ_KEY
+      // fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxResults=12&key=${key}`)
       .then(response => response.json())
-      .then(res => (this.props.setTrail(res)))
+      .then(res => {
+        if (res.error) {
+          alert(res.error)
+        } else {
+          (this.props.setTrails(res))
+        }
+      })
       .catch(console.log)
   }
 
@@ -38,12 +44,15 @@ class GeoForm extends Component {
   geoFunction = () => {
     Geocode.setApiKey(process.env.REACT_APP_GEOFORM_API_KEY)
     Geocode.enableDebug()
+    // Get latidude & longitude from address.
     Geocode.fromAddress(this.state.address).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location
         this.getTrails(lat, lng)
       },
       error => {
+        alert("Unknown address")
+        this.props.history.push('/')
         console.error(error)
       }
     )
@@ -75,7 +84,5 @@ class GeoForm extends Component {
 }
 const mapStateToProps = state => ({ trails: state.trails })
 
-export default connect(mapStateToProps, { setTrail })(GeoForm)
+export default connect(mapStateToProps, { setTrails })(GeoForm)
 
-//* When submit button is clicked, render < TrailIndex />
-// {this.state.isSubmitted && <IndexTrail />}

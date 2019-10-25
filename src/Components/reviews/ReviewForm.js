@@ -22,13 +22,16 @@ class ReviewForm extends Component {
     //last two props below were passed in by Redirect when a user hits a review button and this is how to access it with location
     this.props.addReview(this.state.comment, this.props.location.state.trail, this.props.location.state.currentUser)
       //this makes sure the last review is added before rendering /reviews
-      .then(() =>
+      .then(() => {
         this.props.history.push(`/trails/${this.props.location.state.trail.id}/reviews`)
+      }
       )
   }
 
   render() {
+
     if (!this.state.isSubmitted) {
+
       return (
         < >
           <Sub>{this.props.location.state.trail.name}</Sub>

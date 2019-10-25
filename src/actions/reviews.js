@@ -40,14 +40,10 @@ export const addReview = (comment, trail, currentUser) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("data in review", data)
+
         if (data.error) {
           alert(data.error)
         } else {
-          console.log("ADD_SAVE_REVIEW", {
-            type: 'ADD_SAVE_REVIEW',
-            review: data
-          })
           dispatch({
             type: 'ADD_SAVE_REVIEW',
             data
@@ -74,8 +70,6 @@ export const getMyReviews = () => {
         if (reviewsObj.error) {
           alert(reviewsObj.error)
         } else {
-          console.log("reviewsObj in reviews", reviewsObj)
-
           dispatch({
             type: 'GET_MY_REVIEWS',
             reviewsObj
