@@ -81,7 +81,7 @@ export const getCurrentUser = () => {
     })
       .then(res => res.json())
       .then(user => {
-        if (user.error !== "No one is logged in") {
+        if (user.error !== "No one logged in") {
           alert(user.error)
         } else if (user.data) {
           dispatch(setCurrentUser(user.data.attributes))
