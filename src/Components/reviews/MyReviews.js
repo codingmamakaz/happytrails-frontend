@@ -1,32 +1,32 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import MyReview from './MyReview'
 import { getMyReviews } from '../../actions/reviews'
 import { Sub } from '../../ui/Styles'
 
-class MyReviews extends Component {
+const MyReviews = () => {
+  //getting reviews from Redux store - replacement of the mapStateToProps
+  const reviews = useSelector(state => state.reviews)
+  const dispatch = useDispatch()
+  //using useEffect hook to replace componentDidUpdate in function component
+  useEffect(() => {
+    dispatch(getMyReviews())
+  })
 
-  componentDidMount() {
-    this.props.getMyReviews()
-  }
-
-  render() {
-    const reviewArr = this.props.reviews.currentUserReviews.map(review => {
-      return (
-        <MyReview
-          key={review.id}
-          review={review.attributes}
-          review_id={review.id}
-        />
-      )
-    })
+  const reviewArr = reviews.currentUserReviews.map(review => {
     return (
-      < >
-        {this.props.reviews.currentUserReviews.length === 0 ? <Sub className="has-text-black">You haven't created any reviews</Sub> : null}
-        {reviewArr.reverse()}
-      </>
+      <MyReview
+        key={review.id}
+        review={review.attributes}
+        review_id={review.id}
+      />
     )
-  }
+  })
+  return (
+    < >
+      {reviews.currentUserReviews.length === 0 ? <Sub className="has-text-black">You haven't created any reviews</Sub> : null}
+      {reviewArr.reverse()}
+    </>
+  )
 }
-
-export default connect(state => ({ reviews: state.reviews }), { getMyReviews })(MyReviews)
+export default MyReviews
