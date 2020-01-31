@@ -25,10 +25,7 @@ class GeoForm extends Component {
   }
 
   getTrails = (lat, lng) => {
-    const key = "200594950-5f020033b054b3d9e23fb80d0d1d2fd8"
     fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxResults=12&key=${key}`)
-      // const key = process.env.REACT_APP_TRAIL_PRJ_KEY
-      // fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxResults=12&key=${key}`)
       .then(response => response.json())
       .then(res => {
         if (res.error) {
