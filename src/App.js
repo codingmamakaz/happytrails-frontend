@@ -12,24 +12,19 @@ import MyReviews from './components/reviews/MyReviews'
 import TrailReviews from './components/reviews/TrailReviews'
 //Not sure why, but it stopped compiling with trails/GeoForm and having lowercase geoForm works
 import GeoForm from './components/trails/geoForm'
-import { getCurrentUser } from './actions/currentUser'
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.getCurrentUser()
-  }
-
   render() {
-    const { currentUser } = this.props
     return (
       <div className="App">
         <section className="hero is-fullheight has-background is-transparent">
-          {currentUser ? <NavBar /> : null}
+          <NavBar />
           <div className="hero-body">
             <div className="container">
               <Switch>
-                <Route exact path='/' component={Home} />
+                <Route exact path='/' component={GeoForm} />
+                {/* <Route exact path='/' component={Home} /> */}
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/logout' component={Logout} />
@@ -41,7 +36,7 @@ class App extends Component {
               </Switch>
             </div>
           </div>
-          {currentUser ? <div className="hero-foot has-text-white	"><h2>Logged in as {currentUser.username}</h2></div> : null}
+          {/* {currentUser ? <div className="hero-foot has-text-white	"><h2>Logged in as {currentUser.username}</h2></div> : null} */}
         </section>
       </div >
     )
@@ -56,5 +51,6 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getCurrentUser })(App)
+// export default connect(mapStateToProps, { getCurrentUser })(App)
+export default App
 
