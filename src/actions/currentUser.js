@@ -86,7 +86,9 @@ export const getCurrentUser = () => {
           //if the error message is "No one is logged in", which is coming from the back-end
           //then ignore and move on. Otherwise alert the user.error
           //This way, there isn't alert popping up upon every getCurrentUser().
-          console.log(user.error)
+          // console.log(user.error)
+          //I'm just returning here to avoid alert popping up - got it working in master, but won't go away on this branch
+          return
         } else if (user.data) {
           dispatch(setCurrentUser(user.data.attributes))
         }
