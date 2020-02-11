@@ -10,6 +10,7 @@ export const clearMyReviews = () => {
     type: "CLEAR_MY_REVIEWS"
   }
 }
+const REACT_APP_API_URL = 'https://rails-happytrails.herokuapp.com/api/v1'
 
 //When a user clicks "Submit Review" on ReviewForm, this sends
 //Post request to create a new review
@@ -26,7 +27,7 @@ export const addReview = (comment, trail, currentUser) => {
         review: { comment, api_trail_id: trail.api_trail_id, api_trail_name: trail.name, api_trail_url: trail.url, user_id: currentUser.id, username: currentUser.username }
       }
     }
-    return fetch("http://localhost:3000/api/v1/reviews", {
+    return fetch(`${REACT_APP_API_URL}/reviews`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -55,7 +56,7 @@ export const addReview = (comment, trail, currentUser) => {
 //This gets all the reviews currentUser created
 export const getMyReviews = () => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/reviews", {
+    return fetch(`${REACT_APP_API_URL}/reviews`, {
       credentials: "include",
       method: "GET",
       hearders: {
@@ -80,7 +81,7 @@ export const getMyReviews = () => {
 //deletes a review from my reviews
 export const deleteReview = (review_id, history) => {
   return dispatch => {
-    return fetch(`http://localhost:3000/api/v1/reviews/${review_id}`, {
+    return fetch(`${REACT_APP_API_URL}/reviews/${review_id}`, {
       credentials: "include",
       method: "DELETE",
       headers: {
