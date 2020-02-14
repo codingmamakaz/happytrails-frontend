@@ -1,7 +1,9 @@
 The project name is Happy Trails. This was my final project for Flatiron School.
 Happy Trails allows you to search trails near an address you type in, let you save trails for you to view later, and/or write a review of trails.
 
-Here is the [demo](https://happytrails.surge.sh/) 
+Here is the [demo](https://happytrails.surge.sh/).
+You can use Username: Tester
+and password: 123456 to try out the app if you don't want to sign up.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
