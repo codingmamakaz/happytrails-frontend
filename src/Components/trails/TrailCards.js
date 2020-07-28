@@ -30,7 +30,7 @@ class TrailCards extends Component {
         <div className="box card column is-3">
           <div className="card-image">
             <figure className="image is-4by3">
-              <img src={trail.imgSmallMed ? (trail.imgSmallMed) : ("http://appalachiantrail.org/images/default-source/default-album/trailfocus.jpg?sfvrsn=2")} alt={trail.name} />
+              <img src={trail.imgSmallMed ? (trail.imgSmallMed) : ("https://res.cloudinary.com/codingmamakaz/image/upload/v1595974883/20200701_130133_xeycva.jpg")} alt={trail.name} />
             </figure>
           </div>
           <div className="card-content">
