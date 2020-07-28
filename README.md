@@ -1,16 +1,22 @@
-The project name is Happy Trails. This was my final project for Flatiron School.
-Happy Trails allows you to search trails near an address you type in, let you save trails for you to view later, and/or write a review of trails.
+# Happy Trails!
+---
+
+I love discovering new trails, and sharing information about them with friends. I wanted a yelp-like app that allows me to find trails by an address, let me save trails for me to view later, and /or write a review of trails. I couldn't find an app that does all those things, so I created [Happy Trails](https://happytrails.surge.sh/)!
 
 Here is the [demo](https://happytrails.surge.sh/).<br>
 You can use Username: Tester<br>
 Password: 123456 to try out the app if you don't want to sign up.
 
+This project was developed with ReactJS / Redux / Thunk, Bulma to handle front-end and state management.<br>
+It fetches data from Hiking Project Data API, uses Google Geocoding API to allow users to search trails.<br>
+[The backend Rails API](https://github.com/codingmamakaz/happytrails-backend) handles the data persistence.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Using Happy Trails
 
-You need to clone this repo and [the backend Rails API](https://github.com/codingmamakaz/happytrails-backend)
-Once you clone the back end,
+You need to clone this repo and [the backend Rails API](https://github.com/codingmamakaz/happytrails-backend).<br>
+Once you clone the backend API,
 
 ### `bundle install`
 
