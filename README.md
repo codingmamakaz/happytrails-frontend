@@ -1,7 +1,9 @@
 The project name is Happy Trails. This was my final project for Flatiron School.
 Happy Trails allows you to search trails near an address you type in, let you save trails for you to view later, and/or write a review of trails.
 
-Here is the [demo](https://happytrails.surge.sh/) 
+Here is the [demo](https://happytrails.surge.sh/).<br>
+You can use Username: Tester<br>
+Password: 123456 to try out the app if you don't want to sign up.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -32,11 +34,11 @@ You will also see any lint errors in the console.
 ## Contributing to Happy Trails
 To contribute to Happy Trails, follow these steps:
 
-1.Fork this repository.
-2.Create a branch: git checkout -b <branch_name>.
-3.Make your changes and commit them: git commit -m '<commit_message>'
-4.Push to the original branch: git push origin <project_name>/<location>
-5.Create the pull request.
+1. Fork this repository.
+2. Create a branch: git checkout -b <branch_name>.
+3. Make your changes and commit them: git commit -m '<commit_message>'
+4. Push to the original branch: git push origin <project_name>/<location>
+5. Create the pull request.
 Alternatively see the GitHub documentation on [creating a pull request.](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)
   
 ## Contact
