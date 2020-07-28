@@ -1,5 +1,5 @@
 # Happy Trails!
----
+
 
 I love discovering new trails, and sharing information about them with friends. I wanted a yelp-like app that allows me to find trails by an address, let me save trails for me to view later, and /or write a review of trails. I couldn't find an app that does all those things, so I created [Happy Trails](https://happytrails.surge.sh/)!
 
